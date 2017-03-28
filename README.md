@@ -20,39 +20,99 @@
 [download-image]: https://img.shields.io/npm/dm/egg-view-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-view-vue
 
-STILL WORK IN PROGRESS.
+[vue](https://github.com/vuejs/vue) view plugin for egg.
 
-egg view plugin for [vue].
 
 ## Install
 
 ```bash
-$ npm i egg-view-vue --save
+npm i egg-view-vue --save
 ```
 
 ## Usage
 
 ```js
 // {app_root}/config/plugin.js
-exports.view-vue = {
+exports.vue = {
   enable: true,
   package: 'egg-view-vue',
 };
 ```
 
-## Configuration
+
+Set mapping in config
 
 ```js
-// {app_root}/config/config.default.js
-exports.view-vue = {
+exports.view = {
+  // root dir
+  root: path.join(app.baseDir, 'public'),
+  // memory cache
+  cache: 'memory'
 };
 ```
 
+Render in controller
+
+```js
+exports.index = function* () {
+  yield this.render('home/home.js',{ message: 'vue server side render!' });
+};
+```
+
+
+## Feature
+
+### Default View Engine
+
+- view plugin config
+
+```js
+exports.view = {
+    root: path.join(app.baseDir, 'public'),
+}
+```
+
+- only support base vue bundle file render and vue object render, not process script, css dependence.
+
+- support `app.viewEngine` object, include `renderCode`, `renderString`, `readFile` methods, easy to custom view engine
+
+
+### Solution View Engine
+
+- when the view configuration includes the solution configuration, the solution will be used
+
+- you need to use `egg-vue-webpack-dev` plugin to build the project.
+
+- how to use, please see the demo project `egg-vue-webpack-example`
+
+```js
+exports.view = {
+  root: path.join(app.baseDir, 'public'),
+  solution: {
+    // where server render error, will use client render
+  	layout: path.join(app.baseDir, 'app/web/view/layout/layout.html')
+  }
+};
+```
+
+```html
+//layout.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> where server render error, will use client render</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  </head>
+  <body>
+  <div id="app"></div>
+  </body>
+</html>
+```
+
+## Configuration
+
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 
@@ -61,5 +121,3 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 ## License
 
 [MIT](LICENSE)
-
-[vue]: https://vuejs.org/
