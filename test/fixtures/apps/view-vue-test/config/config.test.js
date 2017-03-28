@@ -1,18 +1,19 @@
 'use strict';
+
 const path = require('path');
 
 module.exports = app => {
   const exports = {};
 
+  exports.keys = '123456';
+
   exports.view = {
     root: path.join(app.baseDir, 'public'),
     defaultViewEngine: 'vue',
-    cache: 'memory',
-    // render bundle lru cache
-    lruCacheOptions: {
-      max: 1000,
-      maxAge: 1000 * 3600 * 24 * 7,
-    },
+    cache: false,
+    solution: {
+      layout: path.join(app.baseDir, 'app/view/layout.html')
+    }
   };
 
   return exports;
