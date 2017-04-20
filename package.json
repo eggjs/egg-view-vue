@@ -11,12 +11,12 @@
   "keywords": [
     "egg",
     "eggPlugin",
+    "egg-plugin",
     "egg-view",
     "vue",
     "ssr"
   ],
   "dependencies": {
-    "extend": "^3.0.0",
     "lru-cache": "^4.0.1",
     "vue": "^2.2.4",
     "vue-server-renderer": "^2.1.10"
