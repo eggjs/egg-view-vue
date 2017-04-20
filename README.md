@@ -34,7 +34,7 @@ $ npm i egg-view-vue --save
 // {app_root}/config/plugin.js
 exports.vue = {
   enable: true,
-  package: '@ali/egg-view-vue',
+  package: 'egg-view-vue',
 };
 ```
 
