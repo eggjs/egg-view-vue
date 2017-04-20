@@ -20,8 +20,6 @@
 [download-image]: https://img.shields.io/npm/dm/egg-view-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-view-vue
 
-STILL WORK IN PROGRESS.
-
 egg view plugin for [vue].
 
 ## Install
@@ -34,25 +32,35 @@ $ npm i egg-view-vue --save
 
 ```js
 // {app_root}/config/plugin.js
-exports.view-vue = {
+exports.vue = {
   enable: true,
-  package: 'egg-view-vue',
+  package: '@ali/egg-view-vue',
+};
+```
+
+
+```js
+// {app_root}/config/config.default.js
+exports.vue = {
+  // cache: {
+  //  max: 1000,
+  //  maxAge: 1000 * 3600 * 24 * 7,
+  //},
+};
+```
+
+Render in controller
+
+```js
+// {app_root}/app/controller/test.js
+exports.home = function* (ctx) {
+  yield ctx.render('home/home.js', { name: 'vue view' });
 };
 ```
 
 ## Configuration
 
-```js
-// {app_root}/config/config.default.js
-exports.view-vue = {
-};
-```
-
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 
@@ -61,5 +69,3 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 ## License
 
 [MIT](LICENSE)
-
-[vue]: https://vuejs.org/
