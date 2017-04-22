@@ -1,2 +1,3 @@
-test/fixtures
+test/fixtures/apps/view-vue-test/public
+test/fixtures/apps/view-vue-test/app/view
 coverage
