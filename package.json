@@ -1,6 +1,6 @@
 {
   "name": "egg-view-vue",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "egg view plugin for vue",
   "eggPlugin": {
     "name": "vue",
