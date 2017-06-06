@@ -24,12 +24,16 @@
   "devDependencies": {
     "autod": "^2.8.0",
     "autod-egg": "^1.0.0",
+    "axios": "^0.16.2",
     "egg": "^1.4.0",
     "egg-bin": "^3.4.2",
     "egg-mock": "^3.7.1",
     "eslint": "^3.19.0",
     "eslint-config-egg": "^4.2.0",
     "supertest": "^3.0.0",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1",
+    "vuex-router-sync": "^4.2.0",
     "webstorm-disable-index": "^1.0.11"
   },
   "engines": {
@@ -54,9 +58,6 @@
     "app",
     "lib"
   ],
-  "ci": {
-    "version": "6, 7"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eggjs/egg-view-vue.git"
