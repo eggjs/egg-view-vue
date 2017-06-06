@@ -20,8 +20,6 @@
 [download-image]: https://img.shields.io/npm/dm/egg-view-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-view-vue
 
-STILL WORK IN PROGRESS.
-
 egg view plugin for [vue].
 
 ## Install
@@ -34,32 +32,50 @@ $ npm i egg-view-vue --save
 
 ```js
 // {app_root}/config/plugin.js
-exports.view-vue = {
+exports.vue = {
   enable: true,
   package: 'egg-view-vue',
 };
 ```
 
-## Configuration
+Render in controller, support js bundle render and json bundle render (vue 2.3+)
+
+### js bundle render
 
 ```js
-// {app_root}/config/config.default.js
-exports.view-vue = {
+// {app_root}/app/controller/test.js
+exports.home = function* (ctx) {
+  yield ctx.render('vue-ssr-server-bundle.js', { name: 'vue js bundle render' });
 };
 ```
 
+### json bundle render (vue 2.3+), need to config renderOptions
+
+```js
+// {app_root}/config/config.default.js
+exports.vue = {
+   renderOptions: {
+     template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
+     clientManifest: require('vue-ssr-client-manifest.json')
+   }
+};
+```
+
+```js
+// {app_root}/app/controller/test.js
+exports.home = function* (ctx) {
+  yield ctx.render('vue-ssr-server-bundle.json', { name: 'vue json render' });
+};
+```
+
+## Configuration
+
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/eggjs/egg-view-vue/issues).
 
 ## License
 
 [MIT](LICENSE)
-
-[vue]: https://vuejs.org/

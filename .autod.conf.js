@@ -2,25 +2,24 @@
 
 module.exports = {
   write: true,
+  plugin: 'autod-egg',
   prefix: '^',
-  test: [
-    'test',
-    'benchmark',
-  ],
-  devdep: [
-    'egg',
-    'egg-ci',
-    'egg-bin',
-    'autod',
-    'eslint',
-    'eslint-config-egg',
-    'supertest',
-    'webstorm-disable-index',
-  ],
   exclude: [
     './test/fixtures',
     './docs',
     './coverage',
   ],
-  registry: 'https://r.cnpmjs.org',
+  devdep: [
+    'autod',
+    'autod-egg',
+    'egg-bin',
+    'egg-mock',
+    'mocha',
+    'eslint',
+    'eslint-config-egg'
+  ],
+  keep: [
+  ],
+  semver: [
+  ]
 };
