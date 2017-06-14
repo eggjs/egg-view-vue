@@ -20,8 +20,6 @@
 [download-image]: https://img.shields.io/npm/dm/egg-view-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-view-vue
 
-STILL WORK IN PROGRESS.
-
 egg view plugin for [vue].
 
 ## Install
@@ -34,32 +32,57 @@ $ npm i egg-view-vue --save
 
 ```js
 // {app_root}/config/plugin.js
-exports.view-vue = {
+exports.vue = {
   enable: true,
   package: 'egg-view-vue',
 };
 ```
 
-## Configuration
+Render in controller, support js bundle render and json bundle render (vue 2.3+)
+
+### js bundle render
 
 ```js
-// {app_root}/config/config.default.js
-exports.view-vue = {
+// {app_root}/app/controller/test.js
+exports.home = function* (ctx) {
+  // {app_root}/app/view/vue-ssr-server-bundle.js 
+  yield ctx.render('vue-ssr-server-bundle.js', { name: 'vue js bundle render' });
 };
 ```
 
+### json bundle render (vue 2.3+), need to config renderOptions [createBundleRenderer](https://ssr.vuejs.org/en/api.html#createbundlerendererbundle-options)
+
+```js
+// {app_root}/config/config.default.js
+exports.vue = {
+   // renderOptions config, please @see https://ssr.vuejs.org/en/api.html#renderer-options
+   renderOptions: {
+     template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
+     // webpack vue ssr plugin build manifest file 
+     clientManifest: require(path.join(app.baseDir,'public/vue-ssr-client-manifest.json'))
+     ......
+   }
+};
+```
+
+```js
+// {app_root}/app/controller/test.js
+exports.home = function* (ctx) {
+  // {app_root}/app/view/vue-ssr-server-bundle.json 
+  yield ctx.render('vue-ssr-server-bundle.json', { name: 'vue json render' });
+};
+```
+
+vue server side render example, please see [egg-vue-webpack-boilerplate](https://github.com/hubcarl/egg-vue-webpack-boilerplate)
+
+## Configuration
+
 see [config/config.default.js](config/config.default.js) for more detail.
-
-## Example
-
-<!-- example here -->
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/eggjs/egg-view-vue/issues).
 
 ## License
 
 [MIT](LICENSE)
-
-[vue]: https://vuejs.org/
