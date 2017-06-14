@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = () => {
-  const exports = {};
+  const config = {};
   const cacheObject = {};
-  exports.vue = {
+  config.vue = {
     cache: {
-      set: (name, value) => {
+      set(name, value) {
         cacheObject[name] = value;
       },
-      get: name => {
+      get(name) {
         return cacheObject[name];
       },
     },
   };
 
-  return exports;
+  return config;
 };

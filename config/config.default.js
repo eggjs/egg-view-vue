@@ -13,8 +13,8 @@ module.exports = () => {
   /**
    * vue view options
    * @property {Object|Boolean} [cache] support LRU cache or custom cache(implement set and get method)
-   *  Boolean: default true, use LRU cache
-   *  Object:  support set LRU  or custom cache(implement set and get method)
+   *  - Boolean: default true, use LRU cache
+   *  - Object:  support set LRU or custom cache(implement set and get method)
    * @property {Object} [renderOptions] @see https://ssr.vuejs.org/en/api.html#renderer-options
    * @example property [cache]
    * use default LRU cache:
