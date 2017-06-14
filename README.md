@@ -45,7 +45,7 @@ Render in controller, support js bundle render and json bundle render (vue 2.3+)
 ```js
 // {app_root}/app/controller/test.js
 exports.home = function* (ctx) {
-  // {app_root}/app/view/vue-ssr-server-bundle.js 
+  // {app_root}/app/view/vue-ssr-server-bundle.js
   yield ctx.render('vue-ssr-server-bundle.js', { name: 'vue js bundle render' });
 };
 ```
@@ -57,10 +57,10 @@ exports.home = function* (ctx) {
 exports.vue = {
    // renderOptions config, please @see https://ssr.vuejs.org/en/api.html#renderer-options
    renderOptions: {
-     template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
-     // webpack vue ssr plugin build manifest file 
-     clientManifest: require(path.join(app.baseDir,'public/vue-ssr-client-manifest.json'))
-     ......
+     // template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
+
+     // webpack vue ssr plugin build manifest file
+     // clientManifest: require(path.join(app.baseDir,'public/vue-ssr-client-manifest.json')),
    }
 };
 ```
@@ -68,7 +68,7 @@ exports.vue = {
 ```js
 // {app_root}/app/controller/test.js
 exports.home = function* (ctx) {
-  // {app_root}/app/view/vue-ssr-server-bundle.json 
+  // {app_root}/app/view/vue-ssr-server-bundle.json
   yield ctx.render('vue-ssr-server-bundle.json', { name: 'vue json render' });
 };
 ```

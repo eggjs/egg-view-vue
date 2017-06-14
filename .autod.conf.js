@@ -14,7 +14,6 @@ module.exports = {
     'autod-egg',
     'egg-bin',
     'egg-mock',
-    'mocha',
     'eslint',
     'eslint-config-egg'
   ],
