@@ -10,5 +10,5 @@ module.exports = app => {
   app.get('/renderError', 'view.renderError');
   app.get('/app/api/article/list', 'view.list');
   app.get('/app/api/article/:id', 'view.detail');
-  app.get('/app(/.+)?', 'view.render23');
+  app.get('/app(/.+)?', 'view.renderJSONBundle');
 };

@@ -24,7 +24,7 @@ exports.render = function* (ctx) {
   yield ctx.render('test.js', { message: 'egg-view-vue#vue server side render!' });
 };
 
-exports.render23 = function* (ctx) {
+exports.renderJSONBundle = function* (ctx) {
   const url = ctx.url.replace(/\/app/, '') || '/';
   yield ctx.render('vue-ssr-server-bundle.json', { url }, {
     renderOptions: {
@@ -49,7 +49,7 @@ exports.renderError = function* (ctx) {
   try {
     yield ctx.render('error.js', {
       data: {
-        name: 'swig render',
+        name: 'vue render',
         description: 'egg view plugin for swig',
       },
     });

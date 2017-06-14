@@ -63,7 +63,7 @@
     "url": "git+https://github.com/eggjs/egg-view-vue.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg-view-vue/issues"
+    "url": "https://github.com/eggjs/egg/issues"
   },
   "homepage": "https://github.com/eggjs/egg-view-vue#readme",
   "author": "hubcarl@126.com",
