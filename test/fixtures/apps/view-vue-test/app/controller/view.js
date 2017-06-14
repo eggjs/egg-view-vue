@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 const Model = require('../mocks/article/list');
 
 exports.renderString = function* (ctx) {
@@ -25,11 +26,12 @@ exports.render = function* (ctx) {
 };
 
 exports.renderJSONBundle = function* (ctx) {
+  const manifest = path.join(ctx.app.baseDir, 'public/vue-ssr-client-manifest.json');
   const url = ctx.url.replace(/\/app/, '') || '/';
   yield ctx.render('vue-ssr-server-bundle.json', { url }, {
     renderOptions: {
       template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
-      clientManifest: require('../public/vue-ssr-client-manifest.json'),
+      clientManifest: require(manifest),
     },
   });
 };

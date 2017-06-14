@@ -45,18 +45,22 @@ Render in controller, support js bundle render and json bundle render (vue 2.3+)
 ```js
 // {app_root}/app/controller/test.js
 exports.home = function* (ctx) {
+  // {app_root}/app/view/vue-ssr-server-bundle.js 
   yield ctx.render('vue-ssr-server-bundle.js', { name: 'vue js bundle render' });
 };
 ```
 
-### json bundle render (vue 2.3+), need to config renderOptions
+### json bundle render (vue 2.3+), need to config renderOptions [createBundleRenderer](https://ssr.vuejs.org/en/api.html#createbundlerendererbundle-options)
 
 ```js
 // {app_root}/config/config.default.js
 exports.vue = {
+   // renderOptions config, please @see https://ssr.vuejs.org/en/api.html#renderer-options
    renderOptions: {
      template: '<!DOCTYPE html><html lang="en"><body><!--vue-ssr-outlet--></body></html>',
-     clientManifest: require('vue-ssr-client-manifest.json')
+     // webpack vue ssr plugin build manifest file 
+     clientManifest: require(path.join(app.baseDir,'public/vue-ssr-client-manifest.json'))
+     ......
    }
 };
 ```
@@ -64,9 +68,12 @@ exports.vue = {
 ```js
 // {app_root}/app/controller/test.js
 exports.home = function* (ctx) {
+  // {app_root}/app/view/vue-ssr-server-bundle.json 
   yield ctx.render('vue-ssr-server-bundle.json', { name: 'vue json render' });
 };
 ```
+
+vue server side render example, please see [egg-vue-webpack-boilerplate](https://github.com/hubcarl/egg-vue-webpack-boilerplate)
 
 ## Configuration
 
